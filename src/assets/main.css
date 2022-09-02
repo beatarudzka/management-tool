@@ -4,5 +4,7 @@
 @tailwind utilities;
 
 .router-link-active {
+  display: inline-block;
   background-color: #5e33b9;
+  border-radius: 4px;
 }

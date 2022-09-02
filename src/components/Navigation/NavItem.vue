@@ -1,8 +1,11 @@
 <template>
-  <li>
-    <router-link class="navbar--link" :to="{ name: route.routePath }">{{
-      route.routeName
-    }}</router-link>
+  <li class="navbar__link">
+    <router-link class="navbar__link--item" :to="{ name: routePath }">
+      <slot></slot>
+      <p class="navbar__link--name">
+        {{ routeName }}
+      </p></router-link
+    >
   </li>
 </template>
 
@@ -10,29 +13,30 @@
 export default {
   name: "NavItem",
   props: {
-    route: {
-      type: Object,
+    routeName: {
+      type: String,
+    },
+    routePath: {
+      type: String,
     },
   },
 };
 </script>
 
-<style scoped>
-i {
-  cursor: pointer;
-  color: white;
-  font-weight: 500;
-  list-style: none;
-  text-decoration: none;
-  margin-right: 10px;
-}
-h3 {
-  color: white;
-  font-size: 13px;
-}
-.item {
+<style scoped lang="scss">
+.navbar__link {
   width: 100%;
-  padding: 1rem 0.5rem;
-  display: flex;
+  &--item {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+  }
+  &--name {
+    display: inline-block;
+    width: 100%;
+    margin-left: 1rem;
+    font-size: 15px;
+    color: white;
+  }
 }
 </style>

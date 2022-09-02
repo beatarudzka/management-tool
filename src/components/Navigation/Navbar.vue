@@ -1,8 +1,14 @@
 <template>
-  <nav class="navbar--wrapper">
+  <nav class="navbar__wrapper">
     <div v-show="!mobile">
-      <ul v-for="route in routes" :key="route.routeName">
-        <NavItem :route="route" />
+      <ul>
+        <NavItem routePath="home" routeName="Home"><HomeIcon /></NavItem>
+        <NavItem routePath="calendar" routeName="Calendar"
+          ><CalendarIcon
+        /></NavItem>
+        <NavItem routePath="mind-map" routeName="Mind Map"
+          ><MindMapIcon
+        /></NavItem>
       </ul>
     </div>
     <div
@@ -15,8 +21,14 @@
     </div>
     <transition>
       <div v-show="mobileNav" class="navbar__dropdown--nav">
-        <ul v-for="route in routes" :key="route.routeName">
-          <NavItem :route="route" />
+        <ul class="mt-4">
+          <NavItem routePath="home" routeName="Home"><HomeIcon /></NavItem>
+          <NavItem routePath="calendar" routeName="Calendar"
+            ><CalendarIcon
+          /></NavItem>
+          <NavItem routePath="mind-map" routeName="Mind Map"
+            ><MindMapIcon
+          /></NavItem>
         </ul>
       </div>
     </transition>
@@ -44,11 +56,6 @@ export default {
       mobile: false,
       mobileNav: false,
       windowWidth: null,
-      routes: [
-        { id: 1, routeName: "Home", routePath: "home" },
-        { id: 2, routeName: "Calendar", routePath: "calendar" },
-        { id: 3, routeName: "Mind Map", routePath: "mind-map" },
-      ],
     };
   },
 };
@@ -56,19 +63,14 @@ export default {
 
 <style scoped lang="scss">
 .navbar {
-  &--wrapper {
+  &__wrapper {
     height: 100vh;
-    width: 90%;
     background-color: rgb(36, 21, 73);
     padding: 1rem;
     transition: 0.5s ease all;
     @media (max-width: 768px) {
       max-width: 1140px;
     }
-  }
-  &--link {
-    transition: 0.5s ease all;
-    padding-bottom: 4px;
   }
   .icon-active {
     transform: rotate(180deg);
