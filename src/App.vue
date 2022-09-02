@@ -5,9 +5,18 @@ import Navbar from "./components/Navigation/Navbar.vue";
 
 <template>
   <div class="app--wrapper">
-    <Navbar />
+    <header>
+      <Navbar />
+    </header>
   </div>
   <RouterView />
 </template>
 
-<style scoped></style>
+<style scoped lang="scss">
+header {
+  position: fixed;
+  transition: 0.5s ease all;
+  //width: 100%;
+  color: white;
+}
+</style>
