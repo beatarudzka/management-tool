@@ -36,11 +36,14 @@
 </template>
 
 <script lang="ts">
+import { defineComponent } from "vue";
 import NavItem from "./NavItem.vue";
 import HomeIcon from "../icons/HomeIcon.vue";
 import CalendarIcon from "../icons/CalendarIcon.vue";
 import MindMapIcon from "../icons/MindMapIcon.vue";
 import NavbarMobileIcon from "../icons/NavbarMobileIcon.vue";
+import type navigationTypes from "../../types/navigationTypes.interface";
+
 export default {
   name: "Navbar",
   components: {
@@ -53,10 +56,15 @@ export default {
   data() {
     return {
       scrollPosition: null,
-      mobile: false,
-      mobileNav: false,
-      windowWidth: null,
+      mobile: true as navigationTypes,
+      mobileNav: false as navigationTypes,
+      windowWidth: 0,
     };
+  },
+  methods: {
+    toggleMobileView() {
+      this.mobileNav = !this.mobileNav;
+    },
   },
 };
 </script>
